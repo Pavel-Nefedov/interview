@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<section class="mainapp-section">
+    <h2>Добро пожаловать в наш магазин!</h2>
+    <p>Мы предлагаем широкий ассортимент вымышленных товаров.</p>
+    <ul class="product-list">
+        {% for category in page_obj %}
+        <li>
+            <a href="/products/category" class="button">
+                <h3>{{ category.name }}</h3>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+</section>
+{% endblock %}

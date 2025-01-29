@@ -1,0 +1,6 @@
+env/
+/interview/db.sqlite3
+/interview/.env
+*.xml
+*.iml
+./.idea

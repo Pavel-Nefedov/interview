@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Товары{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Наши товары</h2>
+
+    <ul class="product-list">
+        {% for product in page_obj %}
+        {% if product.quantity != 0 %}
+        <li>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+</section>
+{% endblock %}
