@@ -9,29 +9,21 @@
     <form method="POST" action="create/">
         {% csrf_token %}
         <p>
-            <label>Выберите категорию</label><br>
-                <select>
-                    {% for category in category %}
-                        <option value="category">{{category}}</option>
-                    {% endfor %}
-                </select><br>
-            <label>Введите название</label><br>
-            <input type="text" name="name" /><br>
-            <label>Введите описание</label><br>
-            <input type="text" name="description" /><br>
+            <label>Введите имя категории</label><br>
+            <input type="text" name="name" />
         </p>
         <input type="submit" value="Сохранить" >
     </form>
-    <h2>Список товаров</h2>
+    <h2>Список Категорий</h2>
     <table>
-        <thead><th>Имя</th><th>Категория</th><th>Описание</th><th></th></thead>
-        {% for product in page_obj %}
-        {% if product.is_deleted == 0 %}
+        <thead><th>Название</th><th>Действия</th></thead>
+        {% for category in page_obj %}
+        {% if category.is_deleted == 0 %}
         <tr>
-            <td><a><h3>{{ product.name }}</h3></a></td>
-            <td><a><h3>{{ product.category }}</h3></a></td>
-            <td><a><h3>{{ product.description }}</h3></a></td>
-            <td><a href="edit/{{product.id}}">Изменить</a> | <a href="delete/{{product.id}}">Удалить</a></td>
+            <td>
+                <a><h3>{{ category.name }}</h3></a>
+            </td>
+            <td><a href="edit/{{category.id}}">Изменить</a> | <a href="delete/{{category.id}}">Удалить</a></td>
         </tr>
         {% endif %}
         {% endfor %}

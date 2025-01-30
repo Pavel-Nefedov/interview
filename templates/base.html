@@ -4,19 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'style.css' %}"> <!-- Подключение CSS -->
     <title>{% block title %}Магазин{% endblock %}</title>
 </head>
 <body>
-    <header>
-        <h1>Магазин вымышленной продукции</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="/products/">Товары</a></li>
-            </ul>
-        </nav>
-    </header>
     <main>
         {% block content %}
         {% endblock %}
