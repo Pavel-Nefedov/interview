@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Редактирование продукта</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Редактирование продукта{% endblock %}
+
+{% block content %}
+<section class="mainapp-section">
     <form method="POST">
         {% csrf_token %}
         <p>
-            <label>Выберите категорию</label><br>
-                <select>
-                    {% for category in category %}
-                        <option value="category">{{category.name}}</option>
-                    {% endfor %}
-                </select><br>
-            <label>Введите название продукта</label><br>
-            <input type="text" name="name" value="{{product.name}}"/><br>
-            <label>Введите описание продукта</label><br>
-            <input type="text" name="description" value="{{product.description}}"/><br>
+        <label for="category">Выберите категорию:</label><br>
+        <select name="category" id="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="name">Название:</label><br>
+        <input type="text" name="name" value="{{ product.name }}"><br>
+
+        <label for="description">Описание:</label><br>
+        <textarea name="description">{{ product.description }}</textarea><br>
         </p>
-        <input type="submit" value="Сохранить" >
+        <button type="submit">Сохранить</button>
     </form>
-</body>
-</html>
+</section>
+{% endblock %}

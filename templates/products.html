@@ -1,26 +1,28 @@
 {% extends 'base.html' %}
 
-{% block title %}Главная страница{% endblock %}
+{% block title %}Продукты{% endblock %}
 
 {% block content %}
 <section class="mainapp-section">
     <h2>Добро пожаловать в наш магазин!</h2>
+    <a href="/product">Продукты</a>
+    <a href="/category">Категории</a>
     <p>Мы предлагаем широкий ассортимент вымышленных товаров.</p>
     <form method="POST" action="create/">
         {% csrf_token %}
-        <p>
-            <label>Выберите категорию</label><br>
-                <select>
-                    {% for category in category %}
-                        <option value="category">{{category}}</option>
-                    {% endfor %}
-                </select><br>
-            <label>Введите название</label><br>
-            <input type="text" name="name" /><br>
-            <label>Введите описание</label><br>
-            <input type="text" name="description" /><br>
-        </p>
-        <input type="submit" value="Сохранить" >
+        <label for="category">Выберите категорию:</label><br>
+        <select name="category" id="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="name">Название:</label><br>
+        <input type="text" name="name" value="{{ product.name }}"><br>
+
+        <label for="description">Описание:</label><br>
+        <textarea name="description">{{ product.description }}</textarea><br>
+        <input type="submit" value="Добавить продукт" >
     </form>
     <h2>Список товаров</h2>
     <table>
